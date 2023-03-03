@@ -1,0 +1,42 @@
+<LinearLayout
+        id="layout/editor_frame"
+        direction="vertical"
+        padding_width="50"
+        padding_height="10"
+        background_color="green"
+>
+    <TextView
+            id="example_textview"
+            text="Hello World!"
+            layout_height="wrap_content"
+            layout_width="match_parent"
+            align="left"
+
+            font_size="20px"
+
+            background_color="yellow"
+    />
+    <TextView
+            id="example_textview_2"
+            text="How Are YU?"
+            layout_height="wrap_content"
+            layout_width="wrap_content"
+            layout_align="left"
+            align="center"
+            width="25"
+            font_size="10pt"
+            background_color="orange"
+    />
+    <TextView
+            id="example_textview_3"
+            text="left or right?"
+            layout_height="wrap_content"
+            layout_width="wrap_content"
+            layout_align="left"
+            align="right"
+            font_size="10pt"
+            background_color="blue"
+            foreground_color="red"
+            width="30"
+    />
+</LinearLayout>

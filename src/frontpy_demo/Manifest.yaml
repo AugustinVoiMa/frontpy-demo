@@ -1,0 +1,12 @@
+app_name: Frontpy Demo
+rendering_engine: frontpy_tkinter_engine.windows
+application_package: text_editor
+windows:
+  - title: Frontpy Demo
+    frame_controller: .ui.mainWindow:MainWindowController
+    main: true
+    open_on_launch: true
+    open_mode: floating
+    open_position:
+      x: center
+      y: 100px
