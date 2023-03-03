@@ -39,4 +39,21 @@
             foreground_color="red"
             width="30"
     />
+    <LinearLayout
+        id="layout/two_sides_layout"
+        direction="horizontal"
+    >
+        <TextView
+            id="text_left"
+            text="left lorem"
+            background_color="#888"
+        />
+        <TextView
+            id="text_right"
+            text="right lorem"
+
+            background_color="black"
+            foreground_color="white"
+            />
+    </LinearLayout>
 </LinearLayout>
