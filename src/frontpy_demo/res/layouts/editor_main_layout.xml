@@ -40,20 +40,34 @@
             width="30"
     />
     <LinearLayout
-        id="layout/two_sides_layout"
-        direction="horizontal"
+            id="layout/two_sides_layout"
+            direction="horizontal"
+            background_color="pink"
     >
         <TextView
-            id="text_left"
-            text="left lorem"
-            background_color="#888"
+                id="text_left"
+                text="left lorem"
+                background_color="#888"
+                layout_align="top"
         />
-        <TextView
-            id="text_right"
-            text="right lorem"
+        <LinearLayout
+                id="layout/stack_why_not"
+        >
+            <TextView
+                    id="text_right"
+                    text="right lorem"
 
-            background_color="black"
-            foreground_color="white"
+                    background_color="black"
+                    foreground_color="white"
             />
+            <TextView
+                id="counter"
+                text="0"
+                />
+            <ButtonView
+                id="btn_inc_counter"
+                text="+1"
+                />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
