@@ -3,20 +3,33 @@
         direction="vertical"
         padding_width="5"
         padding_height="1"
-        height="match_parent"
-        width="match_parent"
-        background_color="#EEEAEA"
->
+        layout_height="match_parent"
+        layout_width="match_parent"
+        background_color="#EEEAEA">
     <LinearLayout
             id="layout/menu"
             direction="horizontal"
             background_color="purple"
             width="match_parent"
-            align="left">
+            layout_align="left">
+
+        <ButtonView
+                id="open_btn"
+                text="Open"
+                font_size="12"
+                layout_align="left"
+        />
         <ButtonView
                 id="save_btn"
                 text="Save"
-                align="left"
+                font_size="12"
+                layout_align="left"
+        />
+        <ButtonView
+                id="saveas_btn"
+                text="Save as"
+                font_size="12"
+                layout_align="left"
         />
     </LinearLayout>
     <EditTextView
