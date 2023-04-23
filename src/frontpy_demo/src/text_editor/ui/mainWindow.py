@@ -1,8 +1,9 @@
 import tkinter.filedialog
 from os.path import basename
-from tkinter.messagebox import askyesno, askokcancel
+from tkinter.messagebox import askokcancel
 
-from frontpy_core.core.views import ButtonView, TextView, EditTextView
+from frontpy_core.core.event import KeyEvent
+from frontpy_core.core.views import ButtonView, EditTextView
 from frontpy_core.core.views.frame_controller.frame_controller import FrameController
 from text_editor.R import R
 
@@ -37,6 +38,9 @@ class MainWindowController(FrameController):
         self.edit_text: EditTextView = self.find_view_by_id(R.id.text_edition)
         self.edit_text.on_edit_listener = self.on_edit_text
 
+        self.edit_text.add_event_listener(KeyEvent('Ctrl', "s"), self.on_save_file)
+        self.edit_text.add_event_listener(KeyEvent('Ctrl', "Shift", "S"), self.on_saveas_file)
+
         if self.filename is None:
             self.save_btn.disabled = True
 
@@ -45,7 +49,11 @@ class MainWindowController(FrameController):
 
     @property
     def pending_changes(self):
-        return self.initial_text is not None and self.edit_text.text.strip(' \n') != self.initial_text.strip('\n ')
+        current_text = self.edit_text.text.strip(' \n')
+        if self.initial_text is None:
+            return current_text != ""
+        else:
+            return current_text != self.initial_text.strip('\n ')
 
     def on_open_file(self):
         if self.pending_changes:
@@ -72,6 +80,10 @@ class MainWindowController(FrameController):
         self.update_title()
 
     def on_save_file(self):
+        print("on_save_file")
+        if self.filename is None:
+            return self.on_saveas_file()
+
         assert self.filename is not None
         assert self.pending_changes
 
@@ -81,7 +93,8 @@ class MainWindowController(FrameController):
         self.save_btn.disabled = not self.pending_changes
 
     def on_saveas_file(self):
-        self.filename = tkinter.filedialog.asksaveasfilename(
+        print("on_saveas_file")
+        new_filename = tkinter.filedialog.asksaveasfilename(
             defaultextension=".txt",
             filetypes=[
                 ("Text file", "*.txt"),
@@ -89,6 +102,9 @@ class MainWindowController(FrameController):
             ],
             confirmoverwrite=True
         )
+        if new_filename is None:
+            return
+        self.filename = new_filename
         self.save()
         self.update_title()
 
