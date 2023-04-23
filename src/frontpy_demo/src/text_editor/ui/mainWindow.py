@@ -39,7 +39,7 @@ class MainWindowController(FrameController):
         self.edit_text.on_edit_listener = self.on_edit_text
 
         self.edit_text.add_event_listener(KeyEvent('Ctrl', "s"), self.on_save_file)
-        self.edit_text.add_event_listener(KeyEvent('Ctrl', "Shift", "S"), self.on_saveas_file)
+        self.edit_text.add_event_listener(KeyEvent('Ctrl', "Shift", "s"), self.on_saveas_file)
 
         if self.filename is None:
             self.save_btn.disabled = True
@@ -102,7 +102,7 @@ class MainWindowController(FrameController):
             ],
             confirmoverwrite=True
         )
-        if new_filename is None:
+        if new_filename is None or new_filename == "":
             return
         self.filename = new_filename
         self.save()
